@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Edge;
 
 namespace SpecFlowProject5.Drivers
 {
@@ -12,7 +13,8 @@ namespace SpecFlowProject5.Drivers
     {
         public IWebDriver CreateWebDriver()
         {
-            var options = new ChromeOptions();
+            //var options = new ChromeOptions();
+            var options = new EdgeOptions();
 
             // Disable extensions for faster startup
             options.AddArgument("--disable-extensions");
@@ -29,7 +31,8 @@ namespace SpecFlowProject5.Drivers
             // Disable images for faster page load (optional, but you won't see images)
             options.AddUserProfilePreference("profile.managed_default_content_settings.images", 2);
 
-            return new ChromeDriver(options);
+            //return new ChromeDriver(options);
+            return new EdgeDriver(options);
         }
     }
 }
