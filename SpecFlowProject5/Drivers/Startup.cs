@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
 using SolidToken.SpecFlow.DependencyInjection;
-using SpecFlowProject5.Pages;
+using SpecFlowProject5;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +33,7 @@ namespace SpecFlowProject5.Drivers
                  // Automatically register all classes in SpecFlowProject5.Pages namespace as scoped
                  var pageTypes = Assembly.GetExecutingAssembly()
                                 .GetTypes()
-                                .Where(t => t.IsClass && !t.IsAbstract && t.Namespace != null && t.Namespace.StartsWith("SpecFlowProject5.Pages"));
+                                .Where(t => t.IsClass && !t.IsAbstract && t.Namespace != null && t.Namespace.StartsWith("UI"));
 
                 foreach (var type in pageTypes)
                 {

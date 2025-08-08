@@ -1,9 +1,9 @@
-using SpecFlowProject5.Pages.UltimateQA;
 using System;
 using TechTalk.SpecFlow;
 using UI.Helpers;
+using UI.Pages;
 
-namespace SpecFlowProject5.StepDefinitions
+namespace UI.StepDefinitions
 {
     [Binding]
     public sealed class TelerikStepDefinitions

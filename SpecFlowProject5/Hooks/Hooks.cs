@@ -1,24 +1,34 @@
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
+using UI.Helpers;
 
-namespace SpecFlowProject5.Hooks
+[Binding]
+public class Hooks
 {
-    [Binding]
-    public class Hooks
+    private readonly ScenarioContext _scenarioContext;
+    private readonly IWebDriver _driver;
+
+    public Hooks(ScenarioContext scenarioContext, IWebDriver driver)
     {
-        private readonly IWebDriver _driver;
+        _scenarioContext = scenarioContext;
+        _driver = driver; // Adjust if you use DI or another driver management
+    }
 
-        public Hooks(IWebDriver driver)
-        {
-            _driver = driver;
-        }
+    [AfterScenario]
+    public void AfterScenario()
+    {
+        _driver.Quit();
+    }
 
-        [AfterScenario]
-        public void AfterScenario()
+    [AfterStep]
+    public void AfterStep()
+    {
+        if (_scenarioContext.TestError != null)
         {
-            _driver.Quit();
+            var screenshotPath = ScreenshotHelper.CaptureScreenshot(_driver, _scenarioContext.ScenarioInfo.Title);
+            // Attach to Extent report
+            ExtentReportManager.GetTest().Fail("Step failed. Screenshot attached.")
+                .AddScreenCaptureFromPath(screenshotPath);
         }
     }
 }

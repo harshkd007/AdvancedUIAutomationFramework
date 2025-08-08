@@ -7,7 +7,7 @@ using System;
 using TechTalk.SpecFlow;
 using UI.Helpers;
 
-namespace SpecFlowProject5.Pages.Amezon
+namespace UI.Pages
 {
     public class HomePage
     {

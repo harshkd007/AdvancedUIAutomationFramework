@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UI.Helpers;
 
-namespace SpecFlowProject5.Pages.UltimateQA
+namespace UI.Pages
 {
     public class TelerikHomePage
     {

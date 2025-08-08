@@ -24,7 +24,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="TestData\" />
     <Folder Include="Support\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestData\Users.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
