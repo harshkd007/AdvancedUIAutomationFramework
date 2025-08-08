@@ -2,6 +2,6 @@
 
 @mytag
 Scenario: Verify Home Page Functionality
-	Given I lauch amezon 
+	Given I launch amezon 
 	When I hover on Sign-in and click on orders
 	Then I should navigate to orders window
