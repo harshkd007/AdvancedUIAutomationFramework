@@ -3,9 +3,9 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using SpecFlowProject5.Constants;
-using SpecFlowProject5.Drivers;
 using System;
 using TechTalk.SpecFlow;
+using UI.Helpers;
 
 namespace SpecFlowProject5.Pages.Amezon
 {

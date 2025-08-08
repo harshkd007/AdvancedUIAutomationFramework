@@ -1,13 +1,14 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using SpecFlowProject5.Drivers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UI.Helpers;
 
 namespace SpecFlowProject5.Pages.UltimateQA
 {
@@ -78,6 +79,9 @@ namespace SpecFlowProject5.Pages.UltimateQA
             }
         }
 
-
+        public void VerifyTitle(string title)
+        {
+            Assert.IsTrue(driver.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
+        }       
     }
 }

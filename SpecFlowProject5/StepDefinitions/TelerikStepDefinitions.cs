@@ -1,7 +1,7 @@
-using SpecFlowProject5.Drivers;
 using SpecFlowProject5.Pages.UltimateQA;
 using System;
 using TechTalk.SpecFlow;
+using UI.Helpers;
 
 namespace SpecFlowProject5.StepDefinitions
 {
@@ -38,5 +38,13 @@ namespace SpecFlowProject5.StepDefinitions
             telerikHomePage.VerifyTitleAndNavigationOptions();
             ExtentReportManager.GetTest().Pass($"Successfully navigated to '{p0}' page and verified navigation options.");
         }
+
+        [Then(@"I should see '([^']*)' title")]
+        public void ThenIShouldSeeTitle(string title)
+        {
+            telerikHomePage.VerifyTitle(title);
+        }
+
+
     }
 }

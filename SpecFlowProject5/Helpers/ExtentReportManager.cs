@@ -3,11 +3,11 @@ using AventStack.ExtentReports.Reporter;
 using System;
 using System.IO;
 
-namespace SpecFlowProject5.Drivers
+namespace UI.Helpers
 {
     public static class ExtentReportManager
     {
-        private static AventStack.ExtentReports.ExtentReports _extent;
+        private static ExtentReports _extent;
         private static ExtentSparkReporter _sparkReporter;
         private static ExtentTest _test;
 
@@ -22,7 +22,7 @@ namespace SpecFlowProject5.Drivers
 
             var reportPath = Path.Combine(reportsDir, $"ExtentReport_{DateTime.Now:yyyyMMdd_HHmmss}.html");
             _sparkReporter = new ExtentSparkReporter(reportPath);
-            _extent = new AventStack.ExtentReports.ExtentReports();
+            _extent = new ExtentReports();
             _extent.AttachReporter(_sparkReporter);
         }
 
