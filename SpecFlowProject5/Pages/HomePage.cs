@@ -1,9 +1,10 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using SpecFlowProject5.Constants;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TechTalk.SpecFlow;
 
 namespace SpecFlowProject5.Pages
 {
@@ -11,15 +12,33 @@ namespace SpecFlowProject5.Pages
     {
         public readonly IWebDriver driver;
 
+        // Locators
+        private readonly By _accountList = By.Id("nav-link-accountList");
+        private readonly By _ordersLink = By.Id("nav_prefetch_yourorders");
+
         public HomePage(IWebDriver driver)
         {
             this.driver = driver;
         }
 
-
         public void GoTo()
         {
-            driver.Navigate().GoToUrl("https://example.com/login");
+            driver.Navigate().GoToUrl(EnvironmentConstants.AmazonHomeUrl);
+            driver.Manage().Window.Maximize();
+        }
+
+        public void HoverAccountList()
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            var accountList = wait.Until(ExpectedConditions.ElementIsVisible(_accountList));
+            new Actions(driver).MoveToElement(accountList).Perform();
+        }
+
+        public void ClickOrdersLink()
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            var ordersLink = wait.Until(ExpectedConditions.ElementToBeClickable(_ordersLink));
+            ordersLink.Click();
         }
     }
 }

@@ -6,6 +6,7 @@ using SpecFlowProject5.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 using System.Threading.Tasks;
@@ -27,7 +28,19 @@ namespace SpecFlowProject5.Drivers
                     var factory = provider.GetRequiredService<WebDriverFactory>();
                     return factory.CreateWebDriver();
                 });
-                services.AddScoped<HomePage>();
+
+                 // services.AddScoped(HomePage);
+                 // Automatically register all classes in SpecFlowProject5.Pages namespace as scoped
+                 var pageTypes = Assembly.GetExecutingAssembly()
+                                 .GetTypes()
+                                 .Where(t => t.IsClass && !t.IsAbstract && t.Namespace == "SpecFlowProject5.Pages");
+
+                foreach (var type in pageTypes)
+                {
+                    services.AddScoped(type);
+                }
+
+
                 return services;
             }
         
