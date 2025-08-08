@@ -1,4 +1,4 @@
-using SpecFlowProject5.Pages;
+using SpecFlowProject5.Pages.Amezon;
 using System;
 using TechTalk.SpecFlow;
 

@@ -32,8 +32,8 @@ namespace SpecFlowProject5.Drivers
                  // services.AddScoped(HomePage);
                  // Automatically register all classes in SpecFlowProject5.Pages namespace as scoped
                  var pageTypes = Assembly.GetExecutingAssembly()
-                                 .GetTypes()
-                                 .Where(t => t.IsClass && !t.IsAbstract && t.Namespace == "SpecFlowProject5.Pages");
+                                .GetTypes()
+                                .Where(t => t.IsClass && !t.IsAbstract && t.Namespace != null && t.Namespace.StartsWith("SpecFlowProject5.Pages"));
 
                 foreach (var type in pageTypes)
                 {
