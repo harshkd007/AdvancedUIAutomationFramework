@@ -15,7 +15,7 @@ namespace SpecFlowProject5.StepDefinitions
             this.homePage = homePage;
         }
        
-        [Given(@"I lauch amezon")]
+        [Given(@"I launch amezon")]
         public void GivenILauchAmezon()
         {
             ExtentReportManager.GetTest().Info("Starting navigation to Amazon homepage.");
