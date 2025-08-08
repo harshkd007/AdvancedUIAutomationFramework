@@ -1,6 +1,6 @@
+using SpecFlowProject5.Drivers;
 using SpecFlowProject5.Pages.UltimateQA;
 using System;
-using System.Security.Cryptography.X509Certificates;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowProject5.StepDefinitions
@@ -18,20 +18,25 @@ namespace SpecFlowProject5.StepDefinitions
         [Given(@"I lauch Telerik website")]
         public void GivenILauchTelerikWebsite()
         {
+            ExtentReportManager.GetTest().Info("Starting navigation to Telerik website.");
             telerikHomePage.GoTo();
+            ExtentReportManager.GetTest().Pass("Navigated to Telerik website.");
         }
 
         [When(@"I click on ""([^""]*)"" button")]
         public void WhenIClickOnButton(string p0)
         {
+            ExtentReportManager.GetTest().Info($"Attempting to click on '{p0}' button.");
             telerikHomePage.ClickOnViewAllButton();
+            ExtentReportManager.GetTest().Pass($"Clicked on '{p0}' button.");
         }
 
         [Then(@"I should navigate to ""([^""]*)"" page")]
         public void ThenIShouldNavigateToPage(string p0)
         {
-            telerikHomePage.VerifyTitleAndNavigationOptions();  
+            ExtentReportManager.GetTest().Info($"Verifying navigation to '{p0}' page.");
+            telerikHomePage.VerifyTitleAndNavigationOptions();
+            ExtentReportManager.GetTest().Pass($"Successfully navigated to '{p0}' page and verified navigation options.");
         }
-
     }
 }

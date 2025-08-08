@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using SpecFlowProject5.Drivers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,23 +25,27 @@ namespace SpecFlowProject5.Pages.UltimateQA
 
         public void GoTo()
         {
+            ExtentReportManager.GetTest().Info("Opening Telerik homepage.");
             driver.Navigate().GoToUrl("https://www.telerik.com/");
             driver.Manage().Window.Maximize();
+            ExtentReportManager.GetTest().Info("Telerik homepage opened and window maximized.");
         }
 
         public void ClickOnViewAllButton()
         {
+            ExtentReportManager.GetTest().Info("Waiting for 'View All Products' button to be visible.");
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             var accountList = wait.Until(ExpectedConditions.ElementIsVisible(_telerikAllProductButton));
+            ExtentReportManager.GetTest().Info("'View All Products' button is visible.");
 
-            // Hover over the element
             var actions = new Actions(driver);
             actions.MoveToElement(accountList).Perform();
+            ExtentReportManager.GetTest().Info("Hovered over 'View All Products' button.");
 
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("arguments[0].scrollIntoView(true);", driver.FindElement(_viewAllProductButton));
             driver.FindElement(_viewAllProductButton).Click();
-
+            ExtentReportManager.GetTest().Pass("'View All Products' button clicked.");
         }
 
         public void VerifyTitleAndNavigationOptions()
