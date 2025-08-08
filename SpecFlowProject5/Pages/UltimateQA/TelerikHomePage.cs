@@ -41,7 +41,12 @@ namespace SpecFlowProject5.Pages.UltimateQA
             js.ExecuteScript("arguments[0].scrollIntoView(true);", driver.FindElement(_viewAllProductButton));
             driver.FindElement(_viewAllProductButton).Click();
 
+        }
+
+        public void VerifyTitleAndNavigationOptions()
+        {
             // Verify title contains "View all products"
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(d => d.Title.Contains("View all products", StringComparison.OrdinalIgnoreCase));
 
             // List of expected navigation option texts
@@ -66,7 +71,6 @@ namespace SpecFlowProject5.Pages.UltimateQA
                     throw new Exception($"Navigation option '{option}' not found.");
                 }
             }
-
         }
 
 

@@ -19,8 +19,19 @@ namespace SpecFlowProject5.StepDefinitions
         public void GivenILauchTelerikWebsite()
         {
             telerikHomePage.GoTo();
-            telerikHomePage.ClickOnViewAllButton();
-
         }
+
+        [When(@"I click on ""([^""]*)"" button")]
+        public void WhenIClickOnButton(string p0)
+        {
+            telerikHomePage.ClickOnViewAllButton();
+        }
+
+        [Then(@"I should navigate to ""([^""]*)"" page")]
+        public void ThenIShouldNavigateToPage(string p0)
+        {
+            telerikHomePage.VerifyTitleAndNavigationOptions();  
+        }
+
     }
 }

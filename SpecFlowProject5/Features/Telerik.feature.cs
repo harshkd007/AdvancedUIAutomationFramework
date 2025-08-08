@@ -103,6 +103,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 7
  testRunner.Given("I lauch Telerik website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
+#line 8
+ testRunner.When("I click on \"View All Products\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 9
+ testRunner.Then("I should navigate to \"All Products\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
