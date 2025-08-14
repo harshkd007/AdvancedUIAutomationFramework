@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <PackageReference Include="ExtentReports" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="Selenium.Support" Version="4.34.0" />
@@ -33,5 +36,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

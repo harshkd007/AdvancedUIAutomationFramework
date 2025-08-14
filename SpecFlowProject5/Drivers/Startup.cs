@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 //[assembly: ScenarioDependencies]
-namespace SpecFlowProject5.Drivers
+namespace UI.Drivers
 {
     public static class Startup
     {

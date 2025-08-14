@@ -1,38 +1,47 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
+using System.IO;
 
-namespace SpecFlowProject5.Drivers
+namespace UI.Drivers
 {
     public class WebDriverFactory
     {
         public IWebDriver CreateWebDriver()
         {
-            //var options = new ChromeOptions();
-            var options = new EdgeOptions();
+            var config = new ConfigurationBuilder()
+                 .SetBasePath(Directory.GetCurrentDirectory())
+                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                 .Build();
 
-            // Disable extensions for faster startup
-            options.AddArgument("--disable-extensions");
+            var browser = config["Browser"];
 
-            // Disable GPU (optional, but can help on some systems)
-            options.AddArgument("--disable-gpu");
+            switch (browser)
+            {
+                case "Chrome":
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArgument("--disable-extensions");
+                    chromeOptions.AddArgument("--disable-gpu");
+                    chromeOptions.AddArgument("--no-sandbox");
+                    chromeOptions.AddArgument("--disable-dev-shm-usage");
+                    chromeOptions.AddUserProfilePreference("profile.managed_default_content_settings.images", 2);
+                    return new ChromeDriver(chromeOptions);
 
-            // No sandbox (useful in CI or restricted environments)
-            options.AddArgument("--no-sandbox");
+                case "Edge":
+                    var edgeOptions = new EdgeOptions();
+                    edgeOptions.AddArgument("--disable-extensions");
+                    edgeOptions.AddArgument("--disable-gpu");
+                    edgeOptions.AddArgument("--no-sandbox");
+                    edgeOptions.AddArgument("--disable-dev-shm-usage");
+                    edgeOptions.AddUserProfilePreference("profile.managed_default_content_settings.images", 2);
+                    return new EdgeDriver(edgeOptions);
 
-            // Disable shared memory usage (useful in Docker/CI)
-            options.AddArgument("--disable-dev-shm-usage");
-
-            // Disable images for faster page load (optional, but you won't see images)
-            options.AddUserProfilePreference("profile.managed_default_content_settings.images", 2);
-
-            //return new ChromeDriver(options);
-            return new EdgeDriver(options);
+                default:
+                    throw new Exception($"Unsupported browser: {browser}");
+            }
         }
     }
 }
+
+
