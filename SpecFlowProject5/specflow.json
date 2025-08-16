@@ -1,0 +1,5 @@
+{
+  "runtime": {
+    "testThreadIsolation": true // run test cases parallely
+  }
+}
