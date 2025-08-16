@@ -1,5 +1,5 @@
 using OpenQA.Selenium;
-using SpecFlowProject5.Constants;
+using UI.Constants;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

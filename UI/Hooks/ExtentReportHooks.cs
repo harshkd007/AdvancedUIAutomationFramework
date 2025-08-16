@@ -2,7 +2,7 @@ using AventStack.ExtentReports;
 using TechTalk.SpecFlow;
 using UI.Helpers;
 
-namespace SpecFlowProject5.Hooks
+namespace UI.Hooks
 {
     [Binding]
     public class ExtentReportHooks

@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
-using SpecFlowProject5.Constants;
+using UI.Constants;
 using System;
 using TechTalk.SpecFlow;
 using UI.Helpers;

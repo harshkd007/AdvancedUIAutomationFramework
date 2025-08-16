@@ -1,6 +1,6 @@
 
 
-namespace SpecFlowProject5.Constants
+namespace UI.Constants
 {
     public static class EnvironmentConstants
     {

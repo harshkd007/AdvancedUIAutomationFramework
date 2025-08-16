@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
 using SolidToken.SpecFlow.DependencyInjection;
-using SpecFlowProject5;
+using UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
