@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using TechTalk.SpecFlow;
 using UI.Helpers;
